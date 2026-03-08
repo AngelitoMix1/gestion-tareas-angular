@@ -1,0 +1,27 @@
+<div class="card-container">
+  <div class="header-flex">
+    <h2>Tareas de {{ auth.currentUser?.name }}</h2>
+  </div>
+
+  <div class="add-task">
+    <input #taskInput placeholder="Nueva tarea..." (keyup.enter)="addTask(taskInput.value); taskInput.value=''">
+    <button (click)="addTask(taskInput.value); taskInput.value=''" class="btn-small">Añadir</button>
+  </div>
+
+  <div class="task-list">
+    <div *ngFor="let task of tasks$ | async" 
+         class="task-card" 
+         [ngClass]="{'completed': task.completed}">
+      
+      <span (click)="toggle(task.id)" class="task-title">
+        {{ task.completed ? '✅' : '⏳' }} {{ task.title }}
+      </span>
+      <button (click)="delete(task.id)" class="btn-danger btn-small">X</button>
+    </div>
+  </div>
+
+  <div class="footer-actions">
+    <button routerLink="/profile" class="btn-secondary">Perfil</button>
+    <button (click)="logout()" class="btn-danger">Salir</button>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="card-container">
+  <h2>Registro Web</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="name" placeholder="Nombre completo">
+    <input type="email" formControlName="email" placeholder="Correo electrónico">
+    <input type="password" formControlName="password" placeholder="Contraseña (mínimo 6 caracteres)">
+    <button type="submit" [disabled]="registerForm.invalid">Crear Cuenta</button>
+  </form>
+  <a routerLink="/login" class="link">Volver al Login</a>
+</div>

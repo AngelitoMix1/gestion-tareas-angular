@@ -1,0 +1,13 @@
+<div class="card-container">
+  <h2>Mi Perfil</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="onSave()">
+    <label>Nombre:</label>
+    <input type="text" formControlName="name" placeholder="Tu nombre">
+    
+    <label>Correo (solo lectura):</label>
+    <input type="email" formControlName="email" class="readonly">
+    
+    <button type="submit" [disabled]="profileForm.invalid">Guardar Cambios</button>
+  </form>
+  <button routerLink="/tasks" class="btn-secondary">Volver a Tareas</button>
+</div>
